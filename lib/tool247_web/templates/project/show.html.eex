@@ -1,0 +1,46 @@
+<div class="container center" style="padding:10px">
+    <%= link "project management", to: project_path(@conn, :index), class: "btn tooltipped green" %>
+    <%= link "Add New Process", to: project_path(@conn, :new), class: "btn tooltipped orange" %>
+    <a class="btn tooltipped grey">others</a>
+</div>
+
+
+<h5><b> <%= @project.name %> </b></h5>
+
+<div class="right">
+  <%= link to: project_path(@conn, :edit, @project)  do %>
+      <i class="material-icons">edit</i>
+  <% end %>
+    <%= link to: project_path(@conn, :delete, @project), method: :delete  do %>
+      <i class="material-icons">delete</i>
+  <% end %>
+</div>
+
+<blockquote>
+<b> Service </b> : <%= @project.service %><br />
+<b> Intended Customers </b> : <%= @project.intended_customers %><br />
+<b> Hours of Availability </b> : <%= @project.hours_of_availability %><br /><br />
+<b> Business Owner </b> : <%= @project.business_Owner %><br />
+<b> How to request </b> : <%= @project.how_to_request %><br />
+
+</blockquote>
+
+<b> Description : </b>
+<blockquote>
+  <%= @project.description %>
+</blockquote>
+
+<b> SLA : </b>
+<blockquote>
+  <%= @project.sla %>
+</blockquote>
+
+<b> Related Services : </b>
+<blockquote>
+  <%= @project.related_services %>
+</blockquote>
+
+<b> Important Links : </b>
+<blockquote>
+  <%= @project.important_links %>
+</blockquote>

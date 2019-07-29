@@ -1,0 +1,34 @@
+<div class="container center" style="padding:10px">
+    <a class="btn tooltipped orange">user management</a>
+    <%= link to: user_path(@conn, :new), class: "btn tooltipped grey" do %>
+        NEW USER
+        <i class="small material-icons left" >add_box</i> 
+    <% end %>
+    <a class="btn tooltipped grey"><i class="material-icons left" >assessment</i>USER LOGS</a>
+</div>
+
+<div class="container" style="background-color:#efefef; margin-top: 50px">    
+  <i class="small material-icons left" style="padding: 2px">account_box</i> 
+
+</div>
+
+<div class="container" style="padding:10px; width:70%">
+<ol class="collection">
+    <%= for user <- @users do %>
+        <li class="collection-item"> 
+            <%= link user.name, to: user_path(@conn, :show, user) %>
+            <div class="right">
+                <%= link to: user_path(@conn, :edit, user)  do %>
+                    <i class="material-icons">edit</i>
+                <% end %>
+
+                <%= link to: user_path(@conn, :delete, user), method: :delete  do %>
+                    <i class="material-icons">delete</i>
+                <% end %>
+            </div>
+        </li>
+    <% end %>
+</ol>
+
+</div>
+

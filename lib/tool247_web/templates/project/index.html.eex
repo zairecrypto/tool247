@@ -1,0 +1,19 @@
+<div class="container center" style="padding:10px">
+    <%= link "project management", to: project_path(@conn, :index), class: "btn tooltipped green" %>
+    <%= link "add NEW project", to: project_path(@conn, :new), class: "btn tooltipped grey" %>
+    <a class="btn tooltipped grey">others</a>
+</div>
+
+<div class="container" style="padding:10px; ; margin-top:10px; text-align:center; background-color:#efefef">    
+<%= for project <- @projects do %>
+<div style="padding:3px; text-align:left">
+        <b>
+            <%= link project.name, to: project_path(@conn, :show, project), class: "btn white-text"%>
+            <i class="material-icons left">edit</i>
+            <i class="material-icons left">delete</i>
+            <i class="material-icons left">remove_red_eye</i>
+        </b>
+        <b class="right">Created on: <%= project.inserted_at %></b>
+</div>
+<% end %>
+</div>

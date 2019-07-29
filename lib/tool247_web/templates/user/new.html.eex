@@ -1,0 +1,41 @@
+<div class="container center" style="padding:10px">
+    <%= link "User Management", to: user_path(@conn, :index), class: "btn tooltipped orange" %>
+    <%= link "NEW USER", to: user_path(@conn, :new), class: "btn tooltipped red" %>
+    <a class="btn tooltipped grey">USER LOGS</a>
+</div>
+
+<div class="row">
+
+<%= form_for @changeset, user_path(@conn, :create), fn f -> %>
+     <div class="row">
+        
+        <div class="input-field col s3">
+          <i class="material-icons prefix">account_box</i>
+            <%= text_input f, :name, placeholder: "Displayed Name", id: "icon_prefix" %>
+            <%= error_tag f, :name%>
+        </div>
+
+        <div class="input-field col s5">
+          <i class="material-icons prefix">email</i>
+            <%= email_input f, :email, placeholder: "Email", id: "icon_email", class: "validate" %>
+            <%= error_tag f, :email%>
+        </div>    
+
+        <div class="input-field col s3">
+          <i class="material-icons prefix">security</i>
+            <%= password_input f, :password, placeholder: "", id: "icon_password" %>
+            <%= error_tag f, :email%>
+        </div>
+    </div>
+
+    <blockquote >
+      Each user is created with <b>administrator right</b> set to <em>false</em>. 
+      Once the user is created, you can edit admin right from <b><%= link "User Management", to: user_path(@conn, :index) %></b> page.
+    </blockquote>
+
+    <div class="container">
+
+    </div>
+    
+    <%= submit "Save User", class: "btn btn-primary red"%>
+<% end %>

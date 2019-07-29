@@ -1,0 +1,36 @@
+<div class="container center" style="padding:10px">
+    <%= link "User Management", to: user_path(@conn, :index), class: "btn tooltipped orange" %>
+    <%= link "NEW USER", to: user_path(@conn, :new), class: "btn tooltipped grey" %>
+    <a class="btn tooltipped grey">USER LOGS</a>
+</div>
+
+
+  <div class="row">
+    <div class="container">
+      <div class="card blue-grey darken-1">
+        <div class="card-content white-text">
+          <span class="card-title"><%= @user.name %></span>
+          <ul>
+            <li><b class="right">ID </b><%= @user.id %></li>
+            <li><b class="right">EMAIL  </b><%= @user.email %></li>
+            <li><b class="right">PASSWORD  </b><%= @user.password %></li>
+            <li><b class="right">IS ADMIN  </b><%= @user.is_admin %></li>
+            <li><b class="right">INSERTED AT  </b><%= @user.inserted_at %></li>
+            <li><b class="right">UPDATED AT  </b><%= @user.updated_at %></li>
+            <hr />
+            <li><b class="right">CREATED BY  </b><%= @user.updated_at %></li>
+            <li><b class="right">APPROVED BY  </b><%= @user.updated_at %></li>
+          </ul>
+        </div>
+        <div class="card-action grey">
+        <b><%= link "Edit User", to: user_path(@conn, :edit, @user), class: "white-text" %></b>
+        <b><%= link "Delete User", to: user_path(@conn, :delete, @user), method: :delete, class: "white-text" %></b>
+        <b><a href="" class="white-text">User Logs</a></b>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+            
+

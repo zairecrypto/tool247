@@ -1,0 +1,90 @@
+  <div class="container center" style="padding:10px">
+    <%= link "project management", to: project_path(@conn, :index), class: "btn tooltipped green" %>
+    <%= link "add NEW project", to: project_path(@conn, :new), class: "btn tooltipped orange" %>
+    <a class="btn tooltipped grey">others</a>
+</div>
+  
+  
+<div class="col s12">
+<%= form_for @changeset, project_path(@conn, :update, @project), fn f -> %>
+ 
+      <div class="row" style="margin:0px">
+
+        <div class="input-field col s6">
+          <%= text_input f, :name, placeholder: "Project Name", type: "text",  class: "validate" %>
+          <%= label f, :name %>
+          <b class="red"><%= error_tag f, :name%></b>
+        </div>
+
+        <div class="input-field col s6">
+          <%= text_input f, :service, placeholder: "Project Service", type: "text",  class: "validate" %>
+          <%= label f, :service %>
+          <%= error_tag f, :service%>
+        </div>
+ 
+      </div>
+      
+      <div class="row" style="margin:0px">
+
+        <div class="input-field col s6">
+          <%= text_input f, :intended_customers, placeholder: "Customer", type: "text",  class: "validate" %>
+          <%= label f, :intended_customers %>
+          <%= error_tag f, :intended_customers%>
+        </div>
+
+        <div class="input-field col s6">
+          <%= text_input f, :hours_of_availability, placeholder: "Project Availability", type: "text",  class: "validate" %>
+          <%= label f, :hours_of_availability %>
+          <%= error_tag f, :hours_of_availability%>
+        </div>
+ 
+      </div>
+      
+      <div class="row" style="margin:0px">
+
+        <div class="input-field col s6">        
+          <%= text_input f, :business_Owner, placeholder: "Owner", type: "text",  class: "validate" %>
+          <%= label f, :business_Owner %>
+          <%= error_tag f, :business_Owner%>
+        </div>
+
+        <div class="input-field col s6">
+          <%= text_input f, :how_to_request, placeholder: "Help", type: "text",  class: "validate" %>
+          <%= label f, :how_to_request %>
+          <%= error_tag f, :how_to_request%>
+        </div>
+ 
+      </div>
+
+    <div class="row" style="margin:0px">
+        <div class="input-field col s12">
+            <%= textarea f, :description, placeholder: "", class: "materialize-textarea" %>
+            <%= label f, :description %>
+        </div>
+    </div>
+    <div class="row" style="margin:0px">
+        <div class="input-field col s6">
+            <%= textarea f, :sla, placeholder: "", class: "materialize-textarea" %>
+            <%= label f, :sla %>
+        </div>
+
+        <div class="input-field col s6">
+            <%= textarea f, :related_services, placeholder: "", class: "materialize-textarea" %>
+            <%= label f, :related_services %>
+        </div>
+    </div>
+
+    <div class="row" style="margin:0px">
+        <div class="input-field col s12">
+            <%= textarea f, :important_links, placeholder: "", class: "materialize-textarea" %>
+            <%= label f, :important_links %>
+        </div>
+    </div>
+    <blockquote >
+      Each project is created without any process. <b>administrator right</b> set to <em>false</em>. 
+      Once the project is created, you can add new processes from <b><%= link "Process Management", to: project_path(@conn, :index) %></b> page.
+    </blockquote>
+
+    <%= submit "Save Project", class: "btn btn-primary red"%>
+<% end %>
+</div>
