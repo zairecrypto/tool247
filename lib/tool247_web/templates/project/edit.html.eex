@@ -4,7 +4,7 @@
     <a class="btn tooltipped grey">others</a>
 </div>
   
-  
+
 <div class="col s12">
 <%= form_for @changeset, project_path(@conn, :update, @project), fn f -> %>
  
@@ -57,33 +57,43 @@
       </div>
 
     <div class="row" style="margin:0px">
-        <div class="input-field col s12">
-            <%= textarea f, :description, placeholder: "", class: "materialize-textarea" %>
-            <%= label f, :description %>
-        </div>
+      <div class="input-field col s12">
+        Description
+        <%= textarea f, :description, placeholder: "", name: "editor1", class: "materialize-textarea" %>
+        <script>
+        CKEDITOR.replace('editor1');
+        </script>
+      </div>
+
     </div>
     <div class="row" style="margin:0px">
         <div class="input-field col s6">
-            <%= textarea f, :sla, placeholder: "", class: "materialize-textarea" %>
-            <%= label f, :sla %>
+            SLA
+            <%= textarea f, :sla, placeholder: "", name: "editor2", class: "materialize-textarea" %>
+            <script>
+              CKEDITOR.replace('editor2');
+            </script>
         </div>
 
         <div class="input-field col s6">
-            <%= textarea f, :related_services, placeholder: "", class: "materialize-textarea" %>
-            <%= label f, :related_services %>
+            RELATED SERVICES
+            <%= textarea f, :related_services, placeholder: "", name: "editor3", class: "materialize-textarea" %>
+            <script>
+              CKEDITOR.replace('editor3');
+            </script>
         </div>
     </div>
 
-    <div class="row" style="margin:0px">
-        <div class="input-field col s12">
-            <%= textarea f, :important_links, placeholder: "", class: "materialize-textarea" %>
-            <%= label f, :important_links %>
-        </div>
+<div class="row" style="margin:0px">
+    <div class="input-field col s12">
+        IMPORTANT LINKS
+        <%= textarea f, :important_links, placeholder: "", name: "editor4", class: "materialize-textarea" %>
+        <script>
+          CKEDITOR.replace('editor4');
+        </script>
+
     </div>
-    <blockquote >
-      Each project is created without any process. <b>administrator right</b> set to <em>false</em>. 
-      Once the project is created, you can add new processes from <b><%= link "Process Management", to: project_path(@conn, :index) %></b> page.
-    </blockquote>
+</div>
 
     <%= submit "Save Project", class: "btn btn-primary red"%>
 <% end %>

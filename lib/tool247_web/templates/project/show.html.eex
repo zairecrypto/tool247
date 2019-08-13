@@ -1,11 +1,13 @@
 <div class="container center" style="padding:10px">
-    <%= link "project management", to: project_path(@conn, :index), class: "btn tooltipped green" %>
+    <%= link to: project_path(@conn, :index), class: "btn tooltipped green" do %>
+      <i class="material-icons">arrow_back</i>   
+    <% end %> |
     <%= link "Add New Process", to: project_path(@conn, :new), class: "btn tooltipped orange" %>
-    <a class="btn tooltipped grey">others</a>
+    <a class="btn tooltipped grey">List of processes</a>
 </div>
 
 
-<h5><b> <%= @project.name %> </b></h5>
+<h5 style="text-align:center"><b> <%= @project.name %> </b></h5>
 
 <div class="right">
   <%= link to: project_path(@conn, :edit, @project)  do %>
@@ -16,31 +18,31 @@
   <% end %>
 </div>
 
-<blockquote>
-<b> Service </b> : <%= @project.service %><br />
-<b> Intended Customers </b> : <%= @project.intended_customers %><br />
-<b> Hours of Availability </b> : <%= @project.hours_of_availability %><br /><br />
-<b> Business Owner </b> : <%= @project.business_Owner %><br />
-<b> How to request </b> : <%= @project.how_to_request %><br />
+<div class="container" style="border-left:red solid 2px; margin-top:40px; padding:10px; box-shadow: 0px 0px 33px 5px rgba(0,0,0,0.75);">
+  <b> Service </b> : <%= @project.service %><br />
+  <b> Intended Customers </b> : <%= @project.intended_customers %><br />
+  <b> Hours of Availability </b> : <%= @project.hours_of_availability %><br /><br />
+  <b> Business Owner </b> : <%= @project.business_Owner %><br />
+  <b> How to request </b> : <%= @project.how_to_request %><br />
 
-</blockquote>
+</div>
 
+<div class="container" style="border-left:red solid 2px; margin-top:20px; padding:10px; box-shadow: 0px 0px 33px 5px rgba(0,0,0,0.75);">
 <b> Description : </b>
-<blockquote>
-  <%= @project.description %>
-</blockquote>
+  <%= raw @project.description %>
+</div>
 
+<div class="container" style="border-left:red solid 2px; margin-top:20px; padding:10px; box-shadow: 0px 0px 33px 5px rgba(0,0,0,0.75);">
 <b> SLA : </b>
-<blockquote>
-  <%= @project.sla %>
-</blockquote>
+  <%= raw @project.sla %>
+</div>
 
+<div class="container" style="border-left:red solid 2px; margin-top:20px; padding:10px; box-shadow: 0px 0px 33px 5px rgba(0,0,0,0.75);">
 <b> Related Services : </b>
-<blockquote>
-  <%= @project.related_services %>
-</blockquote>
+  <%= raw @project.related_services %>
+</div>
 
+<div class="container" style="border-left:red solid 2px; margin-top:20px; padding:10px; box-shadow: 0px 0px 33px 5px rgba(0,0,0,0.75);">
 <b> Important Links : </b>
-<blockquote>
-  <%= @project.important_links %>
-</blockquote>
+  <%= raw @project.important_links %>
+</div>

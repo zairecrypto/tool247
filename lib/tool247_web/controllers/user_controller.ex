@@ -2,7 +2,7 @@ defmodule Tool247Web.UserController do
   use Tool247Web, :controller
   import Ecto
   alias Tool247.{
-    Repo, 
+    Repo,
     User
   }
 
@@ -18,12 +18,16 @@ defmodule Tool247Web.UserController do
 
   def create(conn, %{"user" => user}) do
     changeset = User.changeset(%User{}, user)
-    
+
+    IO.puts "-----------------7"
+    IO.inspect(changeset)
+    IO.puts "-----------------7"
+
     case Repo.insert(changeset) do
-      {:ok, _user}         -> 
+      {:ok, _user}         ->
         add_user(conn, changeset)
-      {:error, changeset} -> 
-        render conn, "new.html", changeset: changeset      
+      {:error, changeset} ->
+        render conn, "new.html", changeset: changeset
     end
   end
 
@@ -36,7 +40,7 @@ defmodule Tool247Web.UserController do
   def delete(conn, %{"id" => user_id}) do
     Repo.get!(User, user_id) |> Repo.delete!
 
-    conn 
+    conn
     |> put_flash(:info, "User Deleted Successfully")
     |> redirect(to: user_path(conn, :index))
 
@@ -49,19 +53,19 @@ defmodule Tool247Web.UserController do
   end
 
   def update(conn, %{"id" => user_id, "user" => user}) do
-  
+
     old_user  = Repo.get(User, user_id)
     changeset = old_user |> User.changeset(user)
 
     case Repo.update(changeset) do
-      {:ok, _user}       -> 
+      {:ok, _user}       ->
         conn
         |> put_flash(:info, "User Updated")
         |> redirect(to: user_path(conn, :index))
-      {:error, changeset} -> 
+      {:error, changeset} ->
         render conn, "edit.html", changeset: changeset, user: old_user
     end
-    
+
   end
 
   defp add_user(conn, changeset) do
@@ -80,10 +84,10 @@ defmodule Tool247Web.UserController do
   defp insert_or_update_user(changeset) do
     case Repo.get_by(User, email: changeset.changes.email) do
       nil   -> Repo.insert(changeset)
-      user  -> {:ok, user}        
+      user  -> {:ok, user}
     end
   end
-  
-  
+
+
 
 end

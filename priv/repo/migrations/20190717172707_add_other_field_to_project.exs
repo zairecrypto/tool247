@@ -4,7 +4,6 @@ defmodule Tool247.Repo.Migrations.AddOtherFieldToProject do
   def change do
     alter table(:projects) do
       add :service, :text
-      add :summary, :text
       add :intended_customers, :string
       add :hours_of_availability, :string
       add :related_services, :string

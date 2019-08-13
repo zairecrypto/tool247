@@ -9,11 +9,10 @@
 <div style="padding:3px; text-align:left">
         <b>
             <%= link project.name, to: project_path(@conn, :show, project), class: "btn white-text"%>
-            <i class="material-icons left">edit</i>
-            <i class="material-icons left">delete</i>
-            <i class="material-icons left">remove_red_eye</i>
+            <i class="material-icons right">edit</i>
+            <i class="material-icons right">delete</i>
+            <i class="material-icons right">remove_red_eye</i>
         </b>
-        <b class="right">Created on: <%= project.inserted_at %></b>
 </div>
 <% end %>
 </div>
